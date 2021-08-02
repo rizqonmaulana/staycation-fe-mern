@@ -1,4 +1,4 @@
-import React from "React";
+import React from "react";
 
 import { Link } from "react-router-dom";
 import propTypes from "prop-types";
@@ -14,6 +14,22 @@ export default function Button(props) {
   const onClick = () => {
     if (props.onClick) props.onClick();
   };
+
+  if (props.isDisabled || props.isLoading) {
+    if (props.isDisabled) className.push("disabled");
+    return (
+      <span className={className.join(" ")} style={props.style}>
+        {props.isLoading ? (
+          <>
+            <span className="spinner-border spinner-border-sm mx-5"></span>
+            <span className="sr-only">Loading...</span>
+          </>
+        ) : (
+          props.children
+        )}
+      </span>
+    );
+  }
 
   if (props.type === "link") {
     if (props.isExternal) {
@@ -40,7 +56,16 @@ export default function Button(props) {
     }
   }
 
-  return <div></div>;
+  return (
+    <Link
+      to={props.href}
+      className={className.join(" ")}
+      style={props.style}
+      onClick={onClick}
+    >
+      {props.children}
+    </Link>
+  );
 }
 
 Button.propTypes = {
@@ -49,6 +74,7 @@ Button.propTypes = {
   target: propTypes.string,
   className: propTypes.string,
   isDisabled: propTypes.bool,
+  isExternal: propTypes.bool,
   isLoading: propTypes.bool,
   isSmall: propTypes.bool,
   isLarge: propTypes.bool,
