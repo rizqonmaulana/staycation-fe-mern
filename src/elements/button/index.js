@@ -34,11 +34,12 @@ export default function Button(props) {
   if (props.type === "link") {
     if (props.isExternal) {
       return (
+        // eslint-disable-next-line
         <a
           href={props.href}
           className={className.join(" ")}
           style={props.style}
-          target={props.target === "_blank" ? "_black" : undefined}
+          target={props.target === "_blank" ? "_blank" : undefined}
           rel={props.target === "_blank" ? "noopener noreferer" : undefined}
         >
           {props.children}
@@ -51,20 +52,21 @@ export default function Button(props) {
           className={className.join(" ")}
           style={props.style}
           onClick={onClick}
-        ></Link>
+        >
+          {props.children}
+        </Link>
       );
     }
   }
 
   return (
-    <Link
-      to={props.href}
+    <button
       className={className.join(" ")}
       style={props.style}
       onClick={onClick}
     >
       {props.children}
-    </Link>
+    </button>
   );
 }
 
