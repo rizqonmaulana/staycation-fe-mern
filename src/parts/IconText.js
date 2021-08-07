@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../button/index";
+import Button from "../elements/button/index";
 
 export default function IconText() {
   return (
