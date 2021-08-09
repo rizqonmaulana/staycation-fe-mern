@@ -1,6 +1,6 @@
 import React from "react";
 
-import Button from "../elements/button/index";
+import Button from "../elements/Button/index";
 import BrandIcon from "./IconText";
 
 export default function Header(props) {

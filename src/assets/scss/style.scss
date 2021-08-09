@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+@import "colorVariables"; 
 @import "functions";
 @import "variables";
 @import "mixins";
@@ -112,7 +113,7 @@
       right: 0;
       color: $white;
       min-height: 30px;
-      boreder-radius: 0px 15px;
+      border-radius: 0px 15px;
       span {
         font-weight: 300;
       }
@@ -185,4 +186,9 @@
         }
       }
     }
+  }
+
+  .testimonial-hero, .testimonial-hero img {
+    width: 365px;
+    height: 500px;
   }
